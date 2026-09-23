@@ -181,16 +181,16 @@ local Library do
 
     local Themes = {
         ["Preset"] = {
-            ["AccentGradient"] = FromRGB(137, 92, 255),
-            ["Background 2"] = FromRGB(8, 10, 18),
-            ["Background"] = FromRGB(12, 15, 27),
-            ["Text"] = FromRGB(242, 244, 255),
-            ["Outline"] = FromRGB(31, 38, 62),
-            ["Section Top"] = FromRGB(25, 30, 50),
-            ["Section Background"] = FromRGB(9, 12, 22),
-            ["Section Background 2"] = FromRGB(15, 19, 34),
-            ["Accent"] = FromRGB(38, 157, 255),
-            ["Element"] = FromRGB(18, 23, 40)
+            ["AccentGradient"] = FromRGB(116, 168, 190),
+            ["Background 2"] = FromRGB(11, 13, 17),
+            ["Background"] = FromRGB(16, 18, 23),
+            ["Text"] = FromRGB(226, 229, 234),
+            ["Outline"] = FromRGB(43, 49, 57),
+            ["Section Top"] = FromRGB(31, 37, 45),
+            ["Section Background"] = FromRGB(13, 15, 19),
+            ["Section Background 2"] = FromRGB(23, 27, 34),
+            ["Accent"] = FromRGB(61, 130, 158),
+            ["Element"] = FromRGB(25, 30, 37)
         }
     }
 
@@ -2283,7 +2283,7 @@ local Library do
                     Name = "\0",
                     BorderColor3 = FromRGB(0, 0, 0),
                     AnchorPoint = Vector2New(0.5, 0.5),
-                    BackgroundTransparency = 0.12,
+                    BackgroundTransparency = 0.08,
                     Position = UDim2New(0.5519999861717224, 0, 0.5, 0),
                     Size = UDim2New(0, 677, 0, IsMobile and 540 or 644),
                     ZIndex = 2,
@@ -2614,13 +2614,22 @@ local Library do
                 Instances:Create("UICorner", {
                     Parent = Items["MainFrame"].Instance,
                     Name = "\0",
-                    CornerRadius = UDimNew(0, 4)
-                })      
+                    CornerRadius = UDimNew(0, 8)
+                })
+
+                local MainStroke = Instances:Create("UIStroke", {
+                    Parent = Items["MainFrame"].Instance,
+                    Name = "\0",
+                    Color = Library.Theme.Outline,
+                    Thickness = 1,
+                    Transparency = 0.15
+                })
+                MainStroke:AddToTheme({Color = "Outline"})
 
                 Instances:Create("UICorner", {
                     Parent = Items["LeftTabs"].Instance,
                     Name = "\0",
-                    CornerRadius = UDimNew(0, 4)
+                    CornerRadius = UDimNew(0, 6)
                 })      
                 
                 do
