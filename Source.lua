@@ -182,15 +182,15 @@ local Library do
     local Themes = {
         ["Preset"] = {
             ["AccentGradient"] = FromRGB(250, 142, 239),
-            ["Background 2"] = FromRGB(11, 13, 17),
-            ["Background"] = FromRGB(16, 18, 23),
-            ["Text"] = FromRGB(226, 229, 234),
-            ["Outline"] = FromRGB(43, 49, 57),
-            ["Section Top"] = FromRGB(31, 37, 45),
-            ["Section Background"] = FromRGB(13, 15, 19),
-            ["Section Background 2"] = FromRGB(23, 27, 34),
+            ["Background 2"] = FromRGB(8, 6, 12),
+            ["Background"] = FromRGB(17, 12, 24),
+            ["Text"] = FromRGB(245, 240, 250),
+            ["Outline"] = FromRGB(62, 38, 74),
+            ["Section Top"] = FromRGB(38, 24, 48),
+            ["Section Background"] = FromRGB(11, 8, 16),
+            ["Section Background 2"] = FromRGB(24, 15, 32),
             ["Accent"] = FromRGB(124, 54, 245),
-            ["Element"] = FromRGB(25, 30, 37)
+            ["Element"] = FromRGB(29, 17, 38)
         }
     }
 
@@ -661,11 +661,11 @@ local Library do
             return getcustomasset(`{Library.Folders.Assets}/{Name}.font`)
         end
 
-        local SemiBold = Font.new("rbxasset://fonts/families/BuilderSans.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        local SemiBold = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
 
-        local Regular = Font.new("rbxasset://fonts/families/BuilderSans.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+        local Regular = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
 
-        local Light = Font.new("rbxasset://fonts/families/BuilderSans.json", Enum.FontWeight.Light, Enum.FontStyle.Normal)
+        local Light = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Light, Enum.FontStyle.Normal)
 
         Library.Fonts = {
             ["SemiBold"] = SemiBold,
@@ -2291,6 +2291,21 @@ local Library do
                     BackgroundColor3 = FromRGB(27, 25, 29)
                 })  Items["MainFrame"]:AddToTheme({BackgroundColor3 = "Background"})
 
+                local MainGradient = Instances:Create("UIGradient", {
+                    Parent = Items["MainFrame"].Instance,
+                    Name = "\0",
+                    Rotation = 115,
+                    Color = RGBSequence{RGBSequenceKeypoint(0, Library.Theme.Background), RGBSequenceKeypoint(1, Library.Theme["Background 2"])}
+                })
+                MainGradient:AddToTheme({
+                    Color = function()
+                        return RGBSequence{
+                            RGBSequenceKeypoint(0, Library.Theme.Background),
+                            RGBSequenceKeypoint(1, Library.Theme["Background 2"])
+                        }
+                    end
+                })
+
                 if IsMobile then 
                     Instances:Create("UIScale", {
                         Parent = Items["MainFrame"].Instance,
@@ -2547,6 +2562,21 @@ local Library do
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(27, 25, 29)
                 })  Items["Content"]:AddToTheme({BackgroundColor3 = "Background"})
+
+                local ContentGradient = Instances:Create("UIGradient", {
+                    Parent = Items["Content"].Instance,
+                    Name = "\0",
+                    Rotation = 90,
+                    Color = RGBSequence{RGBSequenceKeypoint(0, Library.Theme.Background), RGBSequenceKeypoint(1, Library.Theme["Background 2"])}
+                })
+                ContentGradient:AddToTheme({
+                    Color = function()
+                        return RGBSequence{
+                            RGBSequenceKeypoint(0, Library.Theme.Background),
+                            RGBSequenceKeypoint(1, Library.Theme["Background 2"])
+                        }
+                    end
+                })
 
                 Items["HeaderAccent"] = Instances:Create("Frame", {
                     Parent = Items["MainFrame"].Instance,
@@ -4502,7 +4532,7 @@ local Library do
                     ZIndex = 2,
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(31, 31, 36)
-                })  Items["Top"]:AddToTheme({BackgroundColor3 = "Outline"})
+                })  Items["Top"]:AddToTheme({BackgroundColor3 = "Section Top"})
                 
                 Items["TopBackground"] = Instances:Create("Frame", {
                     Parent = Items["Top"].Instance,
@@ -4515,6 +4545,20 @@ local Library do
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(26, 26, 30)
                 })  Items["TopBackground"]:AddToTheme({BackgroundColor3 = "Section Top"})
+
+                Instances:Create("UIGradient", {
+                    Parent = Items["TopBackground"].Instance,
+                    Name = "\0",
+                    Rotation = 0,
+                    Color = RGBSequence{RGBSequenceKeypoint(0, Library.Theme["Section Top"]), RGBSequenceKeypoint(1, Library.Theme.Element)}
+                }):AddToTheme({
+                    Color = function()
+                        return RGBSequence{
+                            RGBSequenceKeypoint(0, Library.Theme["Section Top"]),
+                            RGBSequenceKeypoint(1, Library.Theme.Element)
+                        }
+                    end
+                })
                 
                 Items["Icon"] = Instances:Create("ImageLabel", {
                     Parent = Items["TopBackground"].Instance,
