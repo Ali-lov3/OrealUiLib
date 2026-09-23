@@ -181,16 +181,16 @@ local Library do
 
     local Themes = {
         ["Preset"] = {
-            ["AccentGradient"] = FromRGB(0, 195, 255),    
-            ["Background 2"] = FromRGB(10, 10, 12),       
-            ["Background"] = FromRGB(12, 12, 14),         
-            ["Text"] = FromRGB(235, 235, 235),            
-            ["Outline"] = FromRGB(25, 25, 28),            
-            ["Section Top"] = FromRGB(28, 27, 31),        
-            ["Section Background"] = FromRGB(10, 10, 12), 
-            ["Section Background 2"] = FromRGB(14, 14, 16), 
-            ["Accent"] = FromRGB(0, 116, 224),            
-            ["Element"] = FromRGB(16, 16, 18)             
+            ["AccentGradient"] = FromRGB(137, 92, 255),
+            ["Background 2"] = FromRGB(8, 10, 18),
+            ["Background"] = FromRGB(12, 15, 27),
+            ["Text"] = FromRGB(242, 244, 255),
+            ["Outline"] = FromRGB(31, 38, 62),
+            ["Section Top"] = FromRGB(25, 30, 50),
+            ["Section Background"] = FromRGB(9, 12, 22),
+            ["Section Background 2"] = FromRGB(15, 19, 34),
+            ["Accent"] = FromRGB(38, 157, 255),
+            ["Element"] = FromRGB(18, 23, 40)
         }
     }
 
@@ -2285,7 +2285,7 @@ local Library do
                     AnchorPoint = Vector2New(0.5, 0.5),
                     BackgroundTransparency = 0.12,
                     Position = UDim2New(0.5519999861717224, 0, 0.5, 0),
-                    Size = UDim2New(0, 677, 0, IsMobile and 580 or 644),
+                    Size = UDim2New(0, 677, 0, IsMobile and 540 or 644),
                     ZIndex = 2,
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(27, 25, 29)
