@@ -661,11 +661,11 @@ local Library do
             return getcustomasset(`{Library.Folders.Assets}/{Name}.font`)
         end
 
-        local SemiBold = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        local SemiBold = Font.new("rbxasset://fonts/families/BuilderSans.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
 
-        local Regular = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+        local Regular = Font.new("rbxasset://fonts/families/BuilderSans.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
 
-        local Light = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Light, Enum.FontStyle.Normal)
+        local Light = Font.new("rbxasset://fonts/families/BuilderSans.json", Enum.FontWeight.Light, Enum.FontStyle.Normal)
 
         Library.Fonts = {
             ["SemiBold"] = SemiBold,
@@ -2547,6 +2547,31 @@ local Library do
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(27, 25, 29)
                 })  Items["Content"]:AddToTheme({BackgroundColor3 = "Background"})
+
+                Items["HeaderAccent"] = Instances:Create("Frame", {
+                    Parent = Items["MainFrame"].Instance,
+                    Name = "\0",
+                    Position = UDim2New(0, 14, 0, 53),
+                    Size = UDim2New(1, -28, 0, 2),
+                    ZIndex = 3,
+                    BorderSizePixel = 0,
+                    BackgroundColor3 = FromRGB(255, 255, 255)
+                })
+
+                Instances:Create("UICorner", {
+                    Parent = Items["HeaderAccent"].Instance,
+                    Name = "\0",
+                    CornerRadius = UDimNew(0, 1)
+                })
+
+                Instances:Create("UIGradient", {
+                    Parent = Items["HeaderAccent"].Instance,
+                    Name = "\0",
+                    Rotation = 0,
+                    Color = RGBSequence{RGBSequenceKeypoint(0, Library.Theme.Accent), RGBSequenceKeypoint(1, Library.Theme.AccentGradient)}
+                }):AddToTheme({Color = function()
+                    return RGBSequence{RGBSequenceKeypoint(0, Library.Theme.Accent), RGBSequenceKeypoint(1, Library.Theme.AccentGradient)}
+                end})
 
                 Items["CloseButton"] = Instances:Create("TextButton", {
                     Parent = Items["MainFrame"].Instance,
@@ -4452,6 +4477,21 @@ local Library do
                     AutomaticSize = Enum.AutomaticSize.Y,
                     BackgroundColor3 = FromRGB(29, 28, 32)
                 })  Items["Section"]:AddToTheme({BackgroundColor3 = "Section Background 2"})
+
+                Instances:Create("UICorner", {
+                    Parent = Items["Section"].Instance,
+                    Name = "\0",
+                    CornerRadius = UDimNew(0, 6)
+                })
+
+                local SectionStroke = Instances:Create("UIStroke", {
+                    Parent = Items["Section"].Instance,
+                    Name = "\0",
+                    Color = Library.Theme.Outline,
+                    Thickness = 1,
+                    Transparency = 0.45
+                })
+                SectionStroke:AddToTheme({Color = "Outline"})
                 
                 Items["Top"] = Instances:Create("Frame", {
                     Parent = Items["Section"].Instance,
