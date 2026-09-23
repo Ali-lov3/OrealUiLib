@@ -181,7 +181,7 @@ local Library do
 
     local Themes = {
         ["Preset"] = {
-            ["AccentGradient"] = FromRGB(116, 168, 190),
+            ["AccentGradient"] = FromRGB(250, 142, 239),
             ["Background 2"] = FromRGB(11, 13, 17),
             ["Background"] = FromRGB(16, 18, 23),
             ["Text"] = FromRGB(226, 229, 234),
@@ -189,7 +189,7 @@ local Library do
             ["Section Top"] = FromRGB(31, 37, 45),
             ["Section Background"] = FromRGB(13, 15, 19),
             ["Section Background 2"] = FromRGB(23, 27, 34),
-            ["Accent"] = FromRGB(61, 130, 158),
+            ["Accent"] = FromRGB(124, 54, 245),
             ["Element"] = FromRGB(25, 30, 37)
         }
     }
@@ -661,11 +661,11 @@ local Library do
             return getcustomasset(`{Library.Folders.Assets}/{Name}.font`)
         end
 
-        local SemiBold = Font.new("rbxassetid://12187365364", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        local SemiBold = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
 
-        local Regular = Font.new("rbxassetid://12187365364", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+        local Regular = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
 
-        local Light = Font.new("rbxassetid://12187365364", Enum.FontWeight.Light, Enum.FontStyle.Normal)
+        local Light = Font.new("rbxasset://fonts/families/GothamSSm.json", Enum.FontWeight.Light, Enum.FontStyle.Normal)
 
         Library.Fonts = {
             ["SemiBold"] = SemiBold,
@@ -1169,7 +1169,7 @@ local Library do
                     FontFace = Library.Font,
                     TextColor3 = FromRGB(240, 240, 240),
                     BorderColor3 = FromRGB(0, 0, 0),
-                    Text = "#7842ff",
+                    Text = "#7C36F5",
                     AutomaticSize = Enum.AutomaticSize.X,
                     Size = UDim2New(0, 0, 0, 15),
                     BackgroundTransparency = 1,
@@ -1440,7 +1440,7 @@ local Library do
                     TextColor3 = FromRGB(240, 240, 240),
                     BorderColor3 = FromRGB(0, 0, 0),
                     ClearTextOnFocus = false,
-                    Text = "#7ca3ff",
+                    Text = "#FA8EEF",
                     AnchorPoint = Vector2New(1, 1),
                     Size = UDim2New(0, 140, 0, 20),
                     TextTransparency = 0.5,
