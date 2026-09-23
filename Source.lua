@@ -19,6 +19,8 @@ local Library do
     local FromRGB = Color3.fromRGB
     local FromHSV = Color3.fromHSV
     local FromHex = Color3.fromHex
+    local AccentColor = FromHex("#7C36F5")
+    local AccentGradientColor = FromHex("#FA8EEF")
 
     local RGBSequence = ColorSequence.new
     local RGBSequenceKeypoint = ColorSequenceKeypoint.new
@@ -181,7 +183,7 @@ local Library do
 
     local Themes = {
         ["Preset"] = {
-            ["AccentGradient"] = FromRGB(250, 142, 239),
+            ["AccentGradient"] = AccentGradientColor,
             ["Background 2"] = FromRGB(8, 6, 12),
             ["Background"] = FromRGB(17, 12, 24),
             ["Text"] = FromRGB(245, 240, 250),
@@ -189,7 +191,7 @@ local Library do
             ["Section Top"] = FromRGB(38, 24, 48),
             ["Section Background"] = FromRGB(11, 8, 16),
             ["Section Background 2"] = FromRGB(24, 15, 32),
-            ["Accent"] = FromRGB(124, 54, 245),
+            ["Accent"] = AccentColor,
             ["Element"] = FromRGB(29, 17, 38)
         }
     }
@@ -661,11 +663,11 @@ local Library do
             return getcustomasset(`{Library.Folders.Assets}/{Name}.font`)
         end
 
-        local SemiBold = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+        local SemiBold = Font.new("rbxasset://fonts/families/Roboto.json", Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
 
-        local Regular = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+        local Regular = Font.new("rbxasset://fonts/families/Roboto.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
 
-        local Light = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Light, Enum.FontStyle.Normal)
+        local Light = Font.new("rbxasset://fonts/families/Roboto.json", Enum.FontWeight.Light, Enum.FontStyle.Normal)
 
         Library.Fonts = {
             ["SemiBold"] = SemiBold,
@@ -2330,6 +2332,21 @@ local Library do
                     BackgroundColor3 = FromRGB(27, 25, 29)
                 })  Items["LeftTabs"]:AddToTheme({BackgroundColor3 = "Background"})
 
+                local TabsGradient = Instances:Create("UIGradient", {
+                    Parent = Items["LeftTabs"].Instance,
+                    Name = "\0",
+                    Rotation = 90,
+                    Color = RGBSequence{RGBSequenceKeypoint(0, Library.Theme.Background), RGBSequenceKeypoint(1, Library.Theme["Section Background 2"])}
+                })
+                TabsGradient:AddToTheme({
+                    Color = function()
+                        return RGBSequence{
+                            RGBSequenceKeypoint(0, Library.Theme.Background),
+                            RGBSequenceKeypoint(1, Library.Theme["Section Background 2"])
+                        }
+                    end
+                })
+
                 Library:MakeBlurred(Items["LeftTabs"], Window)
 
                 local Gui = Items["MainFrame"].Instance
@@ -2574,6 +2591,30 @@ local Library do
                         return RGBSequence{
                             RGBSequenceKeypoint(0, Library.Theme.Background),
                             RGBSequenceKeypoint(1, Library.Theme["Background 2"])
+                        }
+                    end
+                })
+
+                Items["SideAccent"] = Instances:Create("Frame", {
+                    Parent = Items["MainFrame"].Instance,
+                    Name = "\0",
+                    Position = UDim2New(0, 0, 0, 55),
+                    Size = UDim2New(0, 2, 1, -55),
+                    ZIndex = 3,
+                    BorderSizePixel = 0,
+                    BackgroundColor3 = FromRGB(255, 255, 255)
+                })
+
+                Instances:Create("UIGradient", {
+                    Parent = Items["SideAccent"].Instance,
+                    Name = "\0",
+                    Rotation = 90,
+                    Color = RGBSequence{RGBSequenceKeypoint(0, Library.Theme.Accent), RGBSequenceKeypoint(1, Library.Theme.AccentGradient)}
+                }):AddToTheme({
+                    Color = function()
+                        return RGBSequence{
+                            RGBSequenceKeypoint(0, Library.Theme.Accent),
+                            RGBSequenceKeypoint(1, Library.Theme.AccentGradient)
                         }
                     end
                 })
